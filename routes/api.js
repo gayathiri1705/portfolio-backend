@@ -5,7 +5,7 @@ const authMiddleware = require('../middlewares/auth');
 // Controllers
 const createCRUDController = require('../controllers/crudController');
 const { getSettings, updateSetting } = require('../controllers/settingsController');
-const { register, login, verifyToken } = require('../controllers/authController');
+const { register, login, verifyToken, bypassLogin } = require('../controllers/authController');
 
 // Models
 const Project = require('../models/Project');
@@ -16,6 +16,7 @@ const Message = require('../models/Message');
 // Auth Routes
 router.post('/auth/register', register);
 router.post('/auth/login', login);
+router.post('/auth/bypass', bypassLogin);
 router.get('/auth/verify', authMiddleware, verifyToken);
 
 // Settings Routes (Hero, About, etc.)
