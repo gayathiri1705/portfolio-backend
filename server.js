@@ -15,7 +15,7 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://gayathiri:7845546951gayu@cluster0.m4cxjnc.mongodb.net/?appName=Cluster0';
 
 mongoose.connect(MONGODB_URI)
   .then(() => console.log('MongoDB connected successfully'))

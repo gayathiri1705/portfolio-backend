@@ -55,7 +55,7 @@ const login = async (req, res) => {
 
         jwt.sign(
             payload,
-            process.env.JWT_SECRET || 'secret',
+            process.env.JWT_SECRET || 'your_super_secret_jwt_key_here',
             { expiresIn: '24h' },
             (err, token) => {
                 if (err) throw err;

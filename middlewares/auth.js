@@ -13,7 +13,7 @@ function auth(req, res, next) {
     try {
         const decoded = jwt.verify(
             token.replace('Bearer ', ''),
-            process.env.JWT_SECRET || 'secret'
+            process.env.JWT_SECRET || 'your_super_secret_jwt_key_here'
         );
 
         req.user = decoded.user;
