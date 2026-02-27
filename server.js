@@ -32,3 +32,6 @@ app.get('/health', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+// Export the Express API for Vercel
+module.exports = app;
